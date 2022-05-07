@@ -16,7 +16,6 @@
  .header__menuItemLink {
    display: flex;
    align-items: center;
-   cursor: pointer;
    text-decoration: none;
  }
  
@@ -30,5 +29,4 @@
   justify-content: center;
   padding-left: 112px;
   padding-right: 288px;
-  cursor: pointer;
  }

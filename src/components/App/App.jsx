@@ -10,8 +10,6 @@ import Modal from '../Modal/Modal';
 
 const App = () => {
 
-   const [state, setState] = useState([]);
-
    function getState() {
       fetch(`${apiConfig.url}`)
          .then(parseResponse)
@@ -25,6 +23,7 @@ const App = () => {
       getState();
    }, []);
 
+   const [state, setState] = useState([]);
    const [isIngredientsDetailsOpened, setIsIngredientsDetailsOpened] = useState(false)
    const [isOrderDetailsOpened, setOrderDetailsOpened] = useState(false)
    const [currentIngredient, setCurrentIngredient] = useState({})

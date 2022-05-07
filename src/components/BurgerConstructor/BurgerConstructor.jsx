@@ -36,18 +36,18 @@ const BurgerConstructor = ({ ingredients, onOrderButtonClick }) => {
                   .filter((ingredient) => ingredient.type !== 'bun')
                   .map((ingredient) => {
                      return (
-                        <li key={ingredient._id}>
+                        <li>
                            <article className={styles.burgerConstructor__cardElement}>
                               <p className={styles.burgerConstructor__dragIcon}>
                                  <DragIcon type='primary' />
                               </p>
-                              <div style={{ minWidth: '488px' }}><ConstructorElement
+                              <ConstructorElement
                                  key={ingredient._id}
                                  isLocked={false}
                                  text={ingredient.name}
                                  price={ingredient.price}
                                  thumbnail={ingredient.image}
-                              /></div>
+                              />
                            </article>
                         </li>
                      )

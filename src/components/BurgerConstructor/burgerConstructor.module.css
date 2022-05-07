@@ -40,7 +40,7 @@
  }
  
  .burgerConstructor__dragIcon {
-   cursor: pointer;
+   cursor: grab;
  }
  
  .burgerConstructor__totalPriceContainer {

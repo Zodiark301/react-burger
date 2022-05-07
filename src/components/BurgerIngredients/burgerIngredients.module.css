@@ -40,6 +40,10 @@
    justify-content: start;
    position: relative;
  }
+
+ .burgerIngredients__cardElement:hover {
+  cursor: pointer;
+}
  
  .burgerIngredients__cardPrice {
    display: grid;
