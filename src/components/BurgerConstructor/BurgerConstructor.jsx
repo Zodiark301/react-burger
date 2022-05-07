@@ -41,7 +41,6 @@ const BurgerConstructor = ({ ingredients, onOrderButtonClick }) => {
                                  <DragIcon type="primary" />
                               </p>
                               <ConstructorElement
-                                 key={ingredient._id}
                                  isLocked={false}
                                  text={ingredient.name}
                                  price={ingredient.price}
