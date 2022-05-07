@@ -41,13 +41,13 @@ const BurgerConstructor = ({ ingredients, onOrderButtonClick }) => {
                               <p className={styles.burgerConstructor__dragIcon}>
                                  <DragIcon type='primary' />
                               </p>
-                              <ConstructorElement
+                              <div style={{ minWidth: '488px' }}><ConstructorElement
                                  key={ingredient._id}
                                  isLocked={false}
                                  text={ingredient.name}
                                  price={ingredient.price}
                                  thumbnail={ingredient.image}
-                              />
+                              /></div>
                            </article>
                         </li>
                      )
