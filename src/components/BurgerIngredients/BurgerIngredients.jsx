@@ -5,100 +5,113 @@ import PropTypesIngredientsData from '../../utils/propTypes';
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useState } from 'react';
 import { CurrencyIcon, Counter } from "@ya.praktikum/react-developer-burger-ui-components";
+import Tabs from "../Tabs/Tabs";
 
-const BurgerIngredients = ({ ingredients, onIngredientClick }) => {
-
-   const [current, setCurrent] = useState('bun');
+const BurgerIngredients = ({ ingredients, onClick }) => {
    return (
       <section className={`${styles.burgerIngredients} pt-10 mr-10`}>
-
-         <h1 className='text text_type_main-large pb-5'>Соберите бургер</h1>
-         <div className={styles.burgerIngredients__tabList}>
-            <a className={styles.burgerIngredients__tab} href="#bun"><Tab value="bun" active={current === 'bun'} onClick={setCurrent}>Булки</Tab></a>
-            <a className={styles.burgerIngredients__tab} href="#sauce"><Tab value="sauce" active={current === 'sauce'} onClick={setCurrent}>Соусы</Tab></a>
-            <a className={styles.burgerIngredients__tab} href="#main"><Tab value="main" active={current === 'main'} onClick={setCurrent}>Начинки</Tab></a>
-         </div>
-
+         <h1 className="text text_type_main-large pb-5">Соберите бургер</h1>
+         <Tabs />
          <div className={`${styles.burgerIngredients__cardsWrapper} mt-10`}>
-
-            <a name='bun'></a>
-            <h3 className='text text_type_main-medium'>Булки</h3>
+            <a name="bun"></a>
+            <h3 className="text text_type_main-medium">Булки</h3>
             <ul className={styles.burgerIngredients__cardList}>
-
                {ingredients
-                  .filter((ingredient) => ingredient.type === 'bun')
+                  .filter((ingredient) => ingredient.type === "bun")
                   .map((ingredient) => {
                      return (
-                        <li className='pl-4 pr-2 pb-10' key={ingredient._id} >
-                           <article className={styles.burgerIngredients__cardElement} onClick={() => onIngredientClick(ingredient)}>
-                              <div className='pl-4 pb-1 pr-4'>
+                        <li className="pl-4 pr-2 pb-10" key={ingredient._id}>
+                           <article
+                              className={styles.burgerIngredients__cardElement}
+                              onClick={() => onClick(ingredient)}
+                           >
+                              <div className="pl-4 pb-1 pr-4">
                                  <img src={ingredient.image} />
                                  <Counter count={1} size="default" />
                                  <div className={styles.burgerIngredients__cardPrice}>
-                                    <p className='text text_type_digits-default pt-1'>{ingredient.price}</p>
-                                    <CurrencyIcon type='primary' />
+                                    <p className="text text_type_digits-default pt-1">
+                                       {ingredient.price}
+                                    </p>
+                                    <CurrencyIcon type="primary" />
                                  </div>
                               </div>
-                              <h3 className={`${styles.burgerIngredients__cardName} text text_type_main-default`}>{ingredient.name}</h3>
+                              <h3
+                                 className={`${styles.burgerIngredients__cardName} text text_type_main-default`}
+                              >
+                                 {ingredient.name}
+                              </h3>
                            </article>
                         </li>
-                     )
-                  })
-               }
+                     );
+                  })}
             </ul>
 
-            <a name='sauce'></a>
-            <h3 className='text text_type_main-medium'>Соусы</h3>
+            <a name="sauce"></a>
+            <h3 className="text text_type_main-medium">Соусы</h3>
             <ul className={styles.burgerIngredients__cardList}>
                {ingredients
-                  .filter((ingredient) => ingredient.type === 'sauce')
+                  .filter((ingredient) => ingredient.type === "sauce")
                   .map((ingredient) => {
                      return (
-                        <li className='pl-4 pr-2 pb-10' key={ingredient._id}>
-                           <article className={styles.burgerIngredients__cardElement} onClick={() => onIngredientClick(ingredient)}>
-                              <div className='pl-4 pb-1 pr-4'>
+                        <li className="pl-4 pr-2 pb-10" key={ingredient._id}>
+                           <article
+                              className={styles.burgerIngredients__cardElement}
+                              onClick={() => onClick(ingredient)}
+                           >
+                              <div className="pl-4 pb-1 pr-4">
                                  <img src={ingredient.image} />
                                  <div className={styles.burgerIngredients__cardPrice}>
-                                    <p className='text text_type_digits-default pt-1'>{ingredient.price}</p>
-                                    <CurrencyIcon type='primary' />
+                                    <p className="text text_type_digits-default pt-1">
+                                       {ingredient.price}
+                                    </p>
+                                    <CurrencyIcon type="primary" />
                                  </div>
                               </div>
-                              <h3 className={`${styles.burgerIngredients__cardName} text text_type_main-default`}>{ingredient.name}</h3>
+                              <h3
+                                 className={`${styles.burgerIngredients__cardName} text text_type_main-default`}
+                              >
+                                 {ingredient.name}
+                              </h3>
                            </article>
                         </li>
-                     )
-                  })
-               }
+                     );
+                  })}
             </ul>
 
-            <a name='main'></a>
-            <h3 className='text text_type_main-medium'>Начинки</h3>
+            <a name="main"></a>
+            <h3 className="text text_type_main-medium">Начинки</h3>
             <ul className={styles.burgerIngredients__cardList}>
                {ingredients
-                  .filter((ingredient) => ingredient.type === 'main')
+                  .filter((ingredient) => ingredient.type === "main")
                   .map((ingredient) => {
                      return (
-                        <li className='pl-4 pr-2 pb-10' key={ingredient._id}>
-                           <article className={styles.burgerIngredients__cardElement} onClick={() => onIngredientClick(ingredient)}>
-                              <div className='pl-4 pb-1 pr-4'>
+                        <li className="pl-4 pr-2 pb-10" key={ingredient._id}>
+                           <article
+                              className={styles.burgerIngredients__cardElement}
+                              onClick={() => onClick(ingredient)}
+                           >
+                              <div className="pl-4 pb-1 pr-4">
                                  <img src={ingredient.image} />
                                  <div className={styles.burgerIngredients__cardPrice}>
-                                    <p className='text text_type_digits-default pt-1'>{ingredient.price}</p>
-                                    <CurrencyIcon type='primary' />
+                                    <p className="text text_type_digits-default pt-1">
+                                       {ingredient.price}
+                                    </p>
+                                    <CurrencyIcon type="primary" />
                                  </div>
                               </div>
-                              <h3 className={`${styles.burgerIngredients__cardName} text text_type_main-default`}>{ingredient.name}</h3>
+                              <h3
+                                 className={`${styles.burgerIngredients__cardName} text text_type_main-default`}
+                              >
+                                 {ingredient.name}
+                              </h3>
                            </article>
                         </li>
-                     )
-                  })
-               }
+                     );
+                  })}
             </ul>
-
          </div>
-
-      </section >
-   )
+      </section>
+   );
 };
 
 BurgerIngredients.propTypes = {
