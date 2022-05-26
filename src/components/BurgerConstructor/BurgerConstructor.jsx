@@ -9,12 +9,11 @@ import { Button } from '@ya.praktikum/react-developer-burger-ui-components';
 
 import OrderContext from '../../services/orderContext';
 
-const BurgerConstructor = ({ ingredients, onClick }) => {
+const BurgerConstructor = ({ onClick }) => {
 
    const [totalPrice, setTotalPrice] = useState(0);
 
    const order = React.useContext(OrderContext);
-   const initialState = { price: 0 };
 
    useEffect(() => {
       order.map((orderEl) => {
@@ -36,7 +35,7 @@ const BurgerConstructor = ({ ingredients, onClick }) => {
                      key={ingredient._id}
                      className={`${styles.burgerConstructor__cardBunElement} ml-8 mr-2 mt-25`}
                   >
-                     <ConstructorItem ingredient={ingredient} type={"top"} >верх </ConstructorItem>
+                     <ConstructorItem ingredient={ingredient} type={"top"}> верх</ConstructorItem>
                   </article>
                );
             })}
@@ -53,7 +52,7 @@ const BurgerConstructor = ({ ingredients, onClick }) => {
                                  <p className={styles.burgerConstructor__dragIcon}>
                                     <DragIcon type="primary" />
                                  </p>
-                                 <ConstructorItem ingredient={ingredient} type={""} />
+                                 <ConstructorItem isLocked={false} ingredient={ingredient} type={""} />
                               </article>
                            </li>
                         );
@@ -72,7 +71,7 @@ const BurgerConstructor = ({ ingredients, onClick }) => {
                      key={ingredient._id}
                      className={`${styles.burgerConstructor__cardBunElement} ml-8 mr-2 mb-6`}
                   >
-                     <ConstructorItem ingredient={ingredient} type={"bottom"} >низ </ConstructorItem>
+                     <ConstructorItem ingredient={ingredient} type={"bottom"}> низ</ConstructorItem>
                   </article>
                );
             })}
@@ -94,7 +93,6 @@ const BurgerConstructor = ({ ingredients, onClick }) => {
 };
 
 BurgerConstructor.propTypes = {
-   ingredients: PropTypes.arrayOf(PropTypesIngredientsData).isRequired,
    onClick: PropTypes.func.isRequired,
 };
 

@@ -30,21 +30,13 @@ function App() {
       setIsIngredientsDetailsOpened(false);
    };
 
-   const handleEscKeydownIngredientModal = (event) => {
-      event.key === "Escape" && closeIngredientModal();
-   };
-
    const closeOrderModal = () => {
       setOrderDetailsOpened(false);
    };
 
-   const handleEscKeydownOrderModal = (event) => {
-      event.key === "Escape" && closeOrderModal();
-   };
-
    const handleOrderClick = () => {
       const orderInfo = order.map((ingredients) => ingredients._id);
-      fetch("https://norma.nomoreparties.space/api/orders", {
+      fetch(`${apiConfig.url}/orders`, {
          method: "POST",
          headers: {
             "Content-Type": "application/json",
@@ -62,7 +54,7 @@ function App() {
    };
 
    const getIngredients = () => {
-      fetch(`${apiConfig.url}`)
+      fetch(`${apiConfig.url}/ingredients`)
          .then(parseResponse)
          .then((json) => {
             setIngridients(json.data);
@@ -83,21 +75,13 @@ function App() {
          <AppHeader />
          <OrderContext.Provider value={order}>
             <main className={styles.app__flexComponents}>
-               <BurgerIngredients
-                  ingredients={ingredients}
-                  onClick={handleIngredientClick}
-               />
-               <BurgerConstructor
-                  ingredients={ingredients}
-                  order={order}
-                  onClick={handleOrderClick}
-               />
+               <BurgerIngredients ingredients={ingredients} onClick={handleIngredientClick} />
+               <BurgerConstructor ingredients={ingredients} order={order} onClick={handleOrderClick} />
             </main>
          </OrderContext.Provider>
          {isIngredientsDetailsOpened && (
             <Modal
                onCloseClick={closeIngredientModal}
-               onEsckeyDown={handleEscKeydownIngredientModal}
             >
                <IngredientDetails ingredient={currentIngredient} />
             </Modal>
@@ -105,7 +89,6 @@ function App() {
          {isOrderDetailsOpened && (
             <Modal
                onCloseClick={closeOrderModal}
-               onEsckeyDown={handleEscKeydownOrderModal}
             >
                <OrderDetails orderNumber={orderNumber} />
             </Modal>
