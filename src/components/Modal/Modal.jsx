@@ -7,11 +7,17 @@ import PropTypes from "prop-types";
 
 const reactModalContainer = document.querySelector('#modals')
 
-const Modal = ({ onCloseClick, onEsckeyDown, children }) => {
+const Modal = ({ onCloseClick, children }) => {
+
+   const handleEscKeydown = (event) => {
+      event.key === "Escape" && onCloseClick();
+   };
+
+
    React.useEffect(() => {
-      document.addEventListener("keydown", onEsckeyDown)
+      document.addEventListener("keydown", handleEscKeydown)
       return () => {
-         document.removeEventListener("keydown", onEsckeyDown)
+         document.removeEventListener("keydown", handleEscKeydown)
       }
    }, [])
 
@@ -29,7 +35,6 @@ const Modal = ({ onCloseClick, onEsckeyDown, children }) => {
 
 Modal.propTypes = {
    onCloseClick: PropTypes.func.isRequired,
-   onEsckeyDown: PropTypes.func.isRequired,
    children: PropTypes.element.isRequired
 };
 
